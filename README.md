@@ -1,21 +1,19 @@
-Hinglish Compiler
-A simple compiler for a custom programming language called Hinglish, built using Flex and Bison as part of the Compiler Design Laboratory (CSE605) course.
+# Hinglish Compiler
 
-🔤 What is Hinglish?
-Hinglish is a beginner-friendly programming language that uses Hindi-inspired keywords. It supports basic programming constructs such as:
+A simple compiler for a custom programming language called **Hinglish**, developed using **Flex** and **Bison** as part of the *Compiler Design Laboratory (CSE605)* course at Navrachana University.
 
-Assignments
+## 🔤 What is Hinglish?
 
-Arithmetic operations
+**Hinglish** is a beginner-friendly programming language that uses Hindi-inspired keywords. It supports fundamental programming constructs, including:
 
-Conditionals (if-else)
+- Variable assignments
+- Arithmetic operations
+- Conditional statements (`if-else`)
+- Loops (`while`)
+- Output statements
 
-Loops (while)
-
-Output statements
-
-Example syntax:
-
+### 🧾 Example Hinglish Code
+```hinglish
 shuru
 sum = 0;
 i = 1;
@@ -24,89 +22,92 @@ jabtak (i <= 3) {
     i = i + 1;
 }
 bolo sum;
-⚙️ How It Works
-The compiler performs the following steps:
+```
 
-Lexical Analysis using Flex
+## ⚙️ How It Works
 
-Tokenizes keywords like shuru, bolo, agar, jabtak, etc.
+The Hinglish compiler processes code through the following stages:
 
-Recognizes operators, numbers, and identifiers.
+1. **Lexical Analysis (Flex)**  
+   - Tokenizes Hinglish keywords (e.g., `shuru`, `bolo`, `agar`, `jabtak`).  
+   - Identifies operators, numbers, and identifiers.
 
-Parsing & TAC Generation using Bison
+2. **Parsing & TAC Generation (Bison)**  
+   - Parses tokenized code according to defined grammar rules.  
+   - Generates **Three-Address Code (TAC)** using temporary variables and labels.
 
-Uses grammar rules to validate syntax.
+3. **Input/Output Handling**  
+   - Reads Hinglish source code from `input.txt`.  
+   - Outputs the generated TAC to `output.txt`.
 
-Generates Three-Address Code (TAC).
-
-Input/Output Handling
-
-Reads code from input.txt
-
-Outputs TAC to output.txt
-
-Example TAC:
-
-makefile
-Copy
-Edit
-t1 = 20
-x = t1
-t2 = 5
-y = t2
-...
+### 📋 Sample TAC Output
+```
+sum = 0
+i = 1
+L1:
+t1 = i <= 3
+if t1 goto L2
+goto L3
+L2:
+t2 = sum + i
+sum = t2
+t3 = i + 1
+i = t3
+goto L1
+L3:
 print sum
-🧪 Test Case Highlights
-Supported features in a single example:
 
-Arithmetic and logical expressions
+```
 
-if-else conditions
+## 🧪 Test Case Highlights
 
-while loop
+The compiler supports:
 
-Output using bolo
+- Arithmetic and logical expressions
+- `if-else` conditional blocks
+- `while` loops using `jabtak`
+- Output statements using `bolo`
 
-🚀 How to Run
-Install Flex and Bison on your system.
+## 🚀 How to Run
 
-Compile the code:
+### ✅ Prerequisites
+- Install **Flex** and **Bison** on your system.
+- Ensure a C compiler (e.g., `gcc`) is available.
 
-flex lex.l
-bison -d yacc.y
-gcc lex.yy.c yacc.tab.c -o compiler
-Create a file input.txt with your Hinglish code.
+### 🛠️ Compilation Steps
+1. Run the following commands to generate the compiler:
+   ```bash
+   flex lex.l
+   bison -d yacc.y
+   gcc lex.yy.c yacc.tab.c -o compiler
+   ```
+2. Place your Hinglish source code in a file named `input.txt`.
+3. Run the compiler:
+   ```bash
+   ./compiler
+   ```
+4. The generated **Three-Address Code** will be written to `output.txt`.
 
-Run the compiler:
-
-./compiler
-See the output TAC in output.txt.
-
-Or you can just simply type:
+### 💡 Alternative Compilation
+Compile and run using:
+```bash
 gcc lex.yy.c yacc.tab.c
-It will create a default named file a.exe
-Run the compiler:
+./a.out
+```
 
-./compiler
-See the output TAC in output.txt.
+## 📁 Project Files
 
-📁 Files
-lex.l – Lexical analyzer (Flex)
+| File         | Description                              |
+|--------------|------------------------------------------|
+| `lex.l`      | Lexical analyzer (Flex)                  |
+| `yacc.y`     | Parser and TAC generator (Bison)         |
+| `input.txt`  | Sample Hinglish program                  |
+| `output.txt` | Generated Three-Address Code             |
 
-yacc.y – Parser and TAC generator (Bison)
+## 👨‍💻 Authors
 
-input.txt – Sample Hinglish program
+- **Nirav Lad** (22000743)
 
-output.txt – Generated Three-Address Code
-
-👨‍💻 Authors
-Nirav Lad (22000743)
-
-Supervised by Prof. Vaibhavi Patel
-Navrachana University, Spring Semester 2024-25
-
-
-
-
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/bPoO8GTw)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19516090&assignment_repo_type=AssignmentRepo)
+**Course In-Charge**: Prof. Vaibhavi Patel  
+**Institution**: Navrachana University  
+**Semester**: Spring 2024–25
